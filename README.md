@@ -22,8 +22,20 @@ uv sync
 
 ## Running the server
 
+**Via `uv run` (no install required):**
 ```bash
 uv run weather.py
+```
+
+**Via the installed entry point (after `uv sync`):**
+```bash
+uv run mcp-weather
+```
+
+**Directly as an executable (uses the `uv run` shebang):**
+```bash
+chmod +x weather.py
+./weather.py
 ```
 
 The server communicates over `stdio`, which is the standard transport for MCP integrations with Claude Desktop.
