@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp_weather"
+version = "0.1.0"
+description = "MCP server for weather alerts and forecasts via the NWS API"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx",
+    "mcp[cli]",
+]
+
+[project.scripts]
+mcp-weather = "weather:main"
+
+[tool.hatch.build.targets.wheel]
+include = ["weather.py"]
