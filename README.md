@@ -2,6 +2,8 @@
 
 An MCP server that provides weather alerts and forecasts using the [National Weather Service API](https://www.weather.gov/documentation/services-web-api).
 
+Based on the article [Build an MCP server](https://modelcontextprotocol.io/docs/develop/build-server).
+
 ## Tools
 
 - **`get_alerts(state)`** — returns active weather alerts for a US state (two-letter code, e.g. `CA`, `NY`)
