@@ -59,6 +59,23 @@ The entry point registered in `pyproject.toml` is `mcp-weather = "weather:main"`
 
 **`weather_cli_inter.py`** — interactive MCP client that connects to any `.py` or `.js` MCP server (pass path as argv[1]), then runs a chat loop backed by the Claude API. Each user query is sent to Claude with the server's tools available; Claude decides which tools to call. The Claude model is set by `ANTHROPIC_MODEL` at the top of the file. `process_query` handles one round of tool calls per query — Claude can call one tool and incorporate its result, but does not loop for multi-step agentic tool chains.
 
+## Git workflow
+
+After completing any meaningful unit of work — a new feature, bug fix, refactor, or documentation update — commit the changes and push to GitHub immediately. Do not batch unrelated changes into a single commit.
+
+Commit message format:
+- Use the imperative mood: "Add X", "Fix Y", "Update Z"
+- First line: short summary (50 chars or less)
+- Keep messages specific enough that the history tells the story of what was built and why
+
+```
+git add <changed files>
+git commit -m "Short description of what changed and why"
+git push
+```
+
+Never let work accumulate uncommitted. If a task spans multiple steps, commit at each logical checkpoint so progress is never lost.
+
 ## Claude Code automation hooks
 
 Configured in `.claude/settings.local.json`:
