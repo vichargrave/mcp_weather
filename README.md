@@ -40,6 +40,29 @@ chmod +x weather.py
 
 The server communicates over `stdio`, which is the standard transport for MCP integrations with Claude Desktop.
 
+## CLI clients
+
+Two standalone MCP clients are included for testing and interacting with the server directly.
+
+### `weather_cli.py` — simple client
+
+Connects to the server, lists tools, then calls `get_alerts("CA")` and `get_forecast` for San Jose and prints the results.
+
+```bash
+uv run weather_cli.py
+```
+
+### `weather_cli_inter.py` — interactive Claude-powered client
+
+Connects to any `.py` or `.js` MCP server and starts a chat loop backed by the Claude API. Natural language queries are sent to Claude, which decides which MCP tools to call and returns a response.
+
+```bash
+export ANTHROPIC_API_KEY=your-key-here
+uv run weather_cli_inter.py weather.py
+```
+
+Requires an `ANTHROPIC_API_KEY` environment variable (or a `.env` file in the project root).
+
 ## Claude Desktop integration
 
 Add the following to your Claude Desktop config (`claude_desktop_config.json`):
