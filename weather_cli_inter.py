@@ -130,6 +130,9 @@ class MCPClient:
                 response = await self.process_query(query)
                 print("\n" + response)
 
+            except KeyboardInterrupt:
+                print("\nExiting...")
+                break
             except Exception as e:
                 print(f"\nError: {str(e)}")
 
@@ -160,4 +163,7 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        pass
