@@ -63,9 +63,27 @@ uv run weather_cli_inter.py weather.py
 
 Requires an `ANTHROPIC_API_KEY` environment variable (or a `.env` file in the project root).
 
-## Claude Desktop integration
+## Claude Desktop integration (macOS)
 
-Add the following to your Claude Desktop config (`claude_desktop_config.json`):
+### 1. Find the config file
+
+Claude Desktop stores its MCP server configuration at:
+
+```
+~/Library/Application Support/Claude/claude_desktop_config.json
+```
+
+Open it in any editor, e.g.:
+
+```bash
+open -e ~/Library/Application\ Support/Claude/claude_desktop_config.json
+```
+
+If the file doesn't exist yet, create it.
+
+### 2. Add the weather server
+
+Paste the following into `claude_desktop_config.json`, replacing `/path/to/mcp_weather` with the absolute path to this repository (e.g. `/Users/yourname/src/mcp_weather`):
 
 ```json
 {
@@ -78,4 +96,12 @@ Add the following to your Claude Desktop config (`claude_desktop_config.json`):
 }
 ```
 
-Replace `/path/to/mcp_weather` with the absolute path to this repository.
+If the file already has other servers under `"mcpServers"`, add the `"weather"` block alongside them — do not create a second `"mcpServers"` key.
+
+### 3. Restart Claude Desktop
+
+Quit Claude Desktop fully (Cmd+Q or **Claude → Quit Claude**) and reopen it. New MCP servers are only loaded on startup.
+
+### 4. Verify the connection
+
+Click the **plug icon** (MCP) in the Claude Desktop chat bar. You should see `weather` listed with the tools `get_alerts` and `get_forecast`. If it's missing, check Console.app for errors from the `Claude` process and confirm `uv` is on your PATH (run `which uv` in Terminal to verify).
