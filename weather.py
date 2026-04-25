@@ -102,7 +102,7 @@ Forecast: {period["detailedForecast"]}
 
 def main():
     signal.signal(signal.SIGINT, lambda *_: sys.exit(0))
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=8000)
 
 
 if __name__ == "__main__":
